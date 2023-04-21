@@ -16,4 +16,4 @@ LABEL description="Une description de l'application"
 WORKDIR /app
 COPY --from=build /home/app/target/deltalake-spark-minio.jar /app/deltalake-spark-minio.jar
 EXPOSE 8080
-CMD ["java", "-jar", "/app/deltalake-spark-minio.jar"]
+CMD ["java", "-Xmx512m", "-jar", "/app/deltalake-spark-minio.jar"]
