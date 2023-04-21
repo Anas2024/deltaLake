@@ -9,6 +9,7 @@ USER 1001
 
 # Package stage #
 FROM openjdk:20-ea-17-jdk
+ENV JAVA_TOOL_OPTIONS="--add-exports java.base/sun.nio.ch=ALL-UNNAMED"
 LABEL maintainer="Anas AIT RAHO <anas.aitraho@gmail.com>"
 LABEL version="1.0"
 LABEL description="Une description de l'application"
