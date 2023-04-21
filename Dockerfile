@@ -7,7 +7,7 @@ COPY src/ /home/app/src/
 RUN mvn -B clean package
 USER 1001
 
-# Package stage
+# Package stage #
 FROM openjdk:20-ea-17-jdk
 LABEL maintainer="Anas AIT RAHO <anas.aitraho@gmail.com>"
 LABEL version="1.0"
