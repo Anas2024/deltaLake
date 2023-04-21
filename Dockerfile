@@ -8,7 +8,7 @@ RUN mvn -B clean package
 USER 1001
 
 # Package stage
-FROM adoptopenjdk:17-jre-hotspot
+FROM openjdk:20-ea-17-jdk
 LABEL maintainer="Anas AIT RAHO <anas.aitraho@gmail.com>"
 LABEL version="1.0"
 LABEL description="Une description de l'application"
