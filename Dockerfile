@@ -1,5 +1,5 @@
 # Build stage
-FROM maven:3.8.3-openjdk-17 AS build
+FROM maven:3.6-openjdk-17-slim AS build
 WORKDIR /home/app
 COPY pom.xml .
 RUN mvn -B dependency:go-offline
