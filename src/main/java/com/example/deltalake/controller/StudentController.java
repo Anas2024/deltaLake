@@ -26,15 +26,9 @@ public class StudentController
 
         return studentService.getAllStudents();
     }
-
     @GetMapping("/Students/{firstname}")
     public List<Student> getStudentsByFirstname(@RequestParam String firstname) {
         return studentService.getStudentsByFirstname(firstname);
-    }
-
-    @PostMapping("/Students")
-    public void createProduit(@RequestBody StudentRequestDTO studentRequestDTO) {
-        studentService.createStudent(studentRequestDTO);
     }
     @GetMapping("/Students/snapshot/before/{date}")
     public List<Student> getEtudiantsByVersionBeforeOrAtTimestamp(String date) throws ParseException {
@@ -49,6 +43,12 @@ public class StudentController
     {
         return studentService.getStudentssBySnapshotVersion(version);
     }
+
+    @PostMapping("/Students")
+    public void createProduit(@RequestBody StudentRequestDTO studentRequestDTO) {
+        studentService.createStudent(studentRequestDTO);
+    }
+
     @PutMapping("/students/{id}")
     public Student updateStudentById(@RequestParam Integer id, @RequestBody StudentRequestDTO studentRequestDTO)
     {

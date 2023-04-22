@@ -20,6 +20,7 @@ public class SparkSessionPool {
     private final GenericObjectPool<SparkSession> pool;
     private final ReentrantLock lock = new ReentrantLock();
     public SparkSessionPool(
+            @Value("${s3a.URL}") String s3aUrl,
             @Value("${s3a.access.key}") String accessKey,
             @Value("${s3a.secret.key}") String secretKey,
             @Value("${maxSparkSessionInstances:10}") Integer maxSparkSessionInstances
@@ -31,7 +32,7 @@ public class SparkSessionPool {
                 .config("spark.delta.logStore.class", "org.apache.spark.sql.delta.storage.S3SingleDriverLogStore")
                 .config("spark.hadoop.fs.s3a.access.key", Objects.requireNonNull(accessKey))
                 .config("spark.hadoop.fs.s3a.secret.key", Objects.requireNonNull(secretKey))
-                .config("spark.hadoop.fs.s3a.endpoint", "http://127.0.0.1:9000")
+                .config("spark.hadoop.fs.s3a.endpoint", Objects.requireNonNull(s3aUrl))
                 .config("spark.hadoop.fs.s3a.path.style.access", "true")
                 .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension")
                 .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog")
